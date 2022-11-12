@@ -1,0 +1,24 @@
+.aaa, .header .logo {
+  font-family: serif;
+}
+
+.header .logo {
+  background-color: red;
+  background: Darkred;
+  box-shadow: 0 0 1px Darkred;
+  color: #fff;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: 400;
+  background: darkblue;
+  box-shadow: 0 0 1px darkblue;
+  color: #fff;
+  -webkit-animation: alternate;
+  -moz-animation: alternate;
+  -o-animation: alternate;
+  animation: alternate;
+}
+
+/*# sourceMappingURL=main-file.css.map */

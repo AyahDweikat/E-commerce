@@ -1,0 +1,11 @@
+@mixin theme ($themeColor:Darkred) {
+    background: $themeColor;
+    box-shadow: 0 0 1px $themeColor;
+    color:#fff;
+}
+@mixin animation {
+    -webkit-animation: alternate;
+    -moz-animation: alternate;
+    -o-animation: alternate;
+    animation: alternate;
+}

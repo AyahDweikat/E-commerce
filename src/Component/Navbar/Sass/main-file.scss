@@ -1,0 +1,22 @@
+@use './utils';
+@import './variables';
+@import './mixins';
+.aaa{
+    font-family: serif;
+}
+.header {
+    .logo{
+        background-color: $background-color-red;
+        @include theme();
+        @extend .aaa;
+    }
+}
+.logo{
+    font-size: 16px;
+    font-weight: utils.$PrimaryFont;
+    @include theme(darkblue); 
+    @include animation;
+}
+
+
+

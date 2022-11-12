@@ -1,0 +1,22 @@
+.header .logo {
+  background-color: red;
+  background: Darkred;
+  box-shadow: 0 0 1px Darkred;
+  color: #fff;
+}
+
+.logo {
+  font-size: 16px;
+  font-weight: normal;
+  background: darkblue;
+  box-shadow: 0 0 1px darkblue;
+  color: #fff;
+  -webkit-animation: alternate;
+  -moz-animation: alternate;
+  -o-animation: alternate;
+  animation: alternate;
+}
+
+/*# sourceMappingURL=output.css.map */
+
+/*# sourceMappingURL=output.css.map */
