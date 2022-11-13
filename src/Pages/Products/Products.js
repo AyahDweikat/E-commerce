@@ -6,6 +6,10 @@ import { GlobalContext } from '../../Utils/Context';
 import './Products.scss';
 import ProductDetailsModal from '../SubComp/ProductDetailsModal';
 
+
+
+
+
 class Products extends React.Component {
     constructor(props){
         super(props)
@@ -51,6 +55,10 @@ class Products extends React.Component {
             // title: <span>{product.title}</span>
         });
     }
+
+
+
+    
     render(){
         return (
             <div>
@@ -69,5 +77,9 @@ class Products extends React.Component {
         )
     }
 }
+
+
+
+
 Products.contextType = GlobalContext;
 export default Products;

@@ -2,12 +2,13 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import CustomModal from "./Component/CustomModal/CustomModal";
 import Navbar from "./Component/Navbar/Navbar";
-import Products from "./Pages/Products/Products";
+// import Products from "./Pages/Products/Products";
 import "./Styles/mixins.scss";
 import { GlobalContext } from "./Utils/Context";
 import {Modal} from "bootstrap";
 // import './App.css';
 import React from 'react';
+import ProductsFun from "./Pages/Products/ProductsFun";
 
 
 class App extends React.Component {
@@ -44,7 +45,8 @@ class App extends React.Component {
           body={this.state?.modalData?.body}
           footer={this.state?.modalData?.footer} />
           <Navbar />
-          <Products />
+          {/* <Products /> */}
+          <ProductsFun/>
         </div>
       </GlobalContext.Provider>
     );
