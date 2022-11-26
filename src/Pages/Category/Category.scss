@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&display=swap');
+
+.product-categories{
+    .custom-img-overlay{
+        cursor: pointer;
+        font-family: 'Fuzzy Bubbles', cursive;
+        opacity: 0;
+        &:hover{//.custom-img-overlay:hover
+            opacity: 1;
+        }
+    }
+}

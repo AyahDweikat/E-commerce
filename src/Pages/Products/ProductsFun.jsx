@@ -5,10 +5,12 @@ import SearchFilter from "../SubComp/SearchFilter";
 import { GlobalContext } from "../../Utils/Context";
 import "./Products.scss";
 import ProductDetailsModal from "../SubComp/ProductDetailsModal";
+import { useSearchParams } from "react-router-dom";
 
 function ProductsFun() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [queryStrings, setQueryStrings ]= useSearchParams();
   const context = useContext(GlobalContext);
   useEffect(() => {
     (async () => {
@@ -45,12 +47,15 @@ function ProductsFun() {
     function onCardClicked(product) {
       context.showModal({
         body: <ProductDetailsModal product={product} />,
-        // title: <span>{product.title}</span>
+        title: <span>{product.title}</span>
       });
+      console.log(product);
     }
-
+    
+    
   return (
     <div>
+      {/* {console.log(queryStrings.get('category'))} */}
       <SearchFilter onChange={onSearchFilterChanged} />
       {/* the value get from searchfilter (searchText) stored in this, and psss it to the function onSearchFilterChanged */}
       <div className="row mx-5">

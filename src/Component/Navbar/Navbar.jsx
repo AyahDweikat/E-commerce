@@ -1,5 +1,6 @@
 import { tab } from '@testing-library/user-event/dist/tab';
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import {navStruct} from './utils'
 export default class Navbar extends Component {
   constructor(props){
@@ -39,12 +40,16 @@ export default class Navbar extends Component {
           <ul className="navbar-nav">
             {navStructState.map((tab, idx)=>{
               return (
-                <li className='nav-item' key={idx}>
+                <div key={idx}>
+                <Link to={tab.name.toLowerCase()}>
+                <li className='nav-item' >
                   <button className={`btn nav-link ${tab.cssClass} ${tab.isActive ? "active": ""}`}
                   onClick={this.onTabbedClicked.bind(this, idx)}>
                     {tab.name}
                   </button>
                 </li>
+                </Link>
+                </div>
               )
             })}
             
