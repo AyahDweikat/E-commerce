@@ -12,9 +12,17 @@ function ProductsFun() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [queryStrings, setQueryStrings ]= useSearchParams();
   const context = useContext(GlobalContext);
+  const _category = queryStrings.get('category');
+  const [category, setCategory] = useState(_category)
   useEffect(() => {
     (async () => {
-      const resp = await FetchData("https://fakestoreapi.com/products", "GET");
+      let resp ='';
+      if(!category){
+        resp = await FetchData("https://fakestoreapi.com/products", "GET");
+      } else {
+        resp = await FetchData(`https://fakestoreapi.com/products/category/${category}`, "GET");
+      }
+      // const resp = await FetchData("https://fakestoreapi.com/products", "GET");
       if (resp.status === 200) {
         setProducts(resp.data);
         setFilteredProducts(resp.data);

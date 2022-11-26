@@ -1,11 +1,16 @@
 export const navStruct = [{
     name: 'Product',
-    isActive: true
+    isActive: false,
+    path:'/product'
 },{
     name: 'Category',
-    isActive: false
+    isActive: true,
+    path:'/category'
+
 },{
     name: 'Login',
-    isActive: false
+    isActive: false,
+    path:'/login'
+
 }
 ]

@@ -26,7 +26,7 @@ function Category() {
       //// @TODO: we will handle it later// to work later
     }
   }
-  const location = useLocation();
+  // const location = useLocation();
   useEffect(() => {
     getCategories();
   }, []);
