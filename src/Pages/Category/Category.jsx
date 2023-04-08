@@ -1,35 +1,21 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { FetchData } from "../../Utils/ApiUtils";
 import { mapCategory } from "./../../Utils/utils";
 import "./Category.scss";
 
 function Category() {
   const [categories, setCategories] = useState([]);
-  // const [categoryName, setCategoryName ] = useState([]);
-  // const [category, setCategory ] = useState([{name:"", image:""}]);
-  // const [image, setImage] = useState([]);
-
-  async function getCategories() {
-    const resp = await FetchData(
-      "https://fakestoreapi.com/products/categories",
-      "GET"
-    );
-    const mappedCategories = mapCategory(resp.data);
-    if (resp.status === 200) {
-      setCategories(mappedCategories);
-      // console.log(mappedCategories);
-    } else {
-      console.warn("sorry, this API failed");
-      //// @TODO: we will handle it later// to work later
-    }
-  }
-  // const location = useLocation();
+  const _categories = useLoaderData()
+  // console.log(dataLoaded);
   useEffect(() => {
-    getCategories();
+    setCategories(_categories);
   }, []);
+  
+
+  
   return (
     <div className="product-categories">
       {categories.map((category, idx) => {

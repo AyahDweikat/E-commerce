@@ -5,8 +5,11 @@ export const navStruct = [{
 },{
     name: 'Category',
     isActive: true,
-    path:'/category'
-
+    path:'/'
+},{
+    name: 'Info',
+    isActive: false,
+    path:'/info'
 },{
     name: 'Login',
     isActive: false,

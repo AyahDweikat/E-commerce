@@ -5,18 +5,23 @@ import SearchFilter from "../SubComp/SearchFilter";
 import { GlobalContext } from "../../Utils/Context";
 import "./Products.scss";
 import ProductDetailsModal from "../SubComp/ProductDetailsModal";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 function ProductsFun() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [queryStrings, setQueryStrings ]= useSearchParams();
   const context = useContext(GlobalContext);
-  const _category = queryStrings.get('category');
-  const [category, setCategory] = useState(_category)
-  useEffect(() => {
-    (async () => {
-      let resp ='';
+
+  // const [category, setCategory] = useState(_category);
+  const location =  useLocation();
+  useEffect(()=>{
+    getProducts();
+  },[location]);// when change location from (product with querystring) to (products)
+
+  async function getProducts(){
+    const category = queryStrings.get('category');
+    let resp ='';
       if(!category){
         resp = await FetchData("https://fakestoreapi.com/products", "GET");
       } else {
@@ -30,8 +35,7 @@ function ProductsFun() {
         console.warn("sorry, this API failed");
         //// @TODO: we will handle it later// to work later
       }
-    })();
-  }, []);
+  }
 
   function onSearchFilterChanged(searchText, filterBy) {
     const _filteredProducts = products.filter((item) => {
@@ -57,7 +61,6 @@ function ProductsFun() {
         body: <ProductDetailsModal product={product} />,
         title: <span>{product.title}</span>
       });
-      console.log(product);
     }
     
     

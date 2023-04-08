@@ -1,11 +1,16 @@
 import { tab } from "@testing-library/user-event/dist/tab";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { navStruct } from "./utils";
-
+import { GlobalContext } from './../../Utils/Context';
+import './Navbar.css'
+import LoginCard from "../LoginCard/LoginCard";
 function Navbar() {
   const [navStructState, setNavStructState] = useState(navStruct);
   const location = useLocation();
+  const _auth = useContext(GlobalContext);
+  let {auth} = _auth;
+
   // const [pathName, setPathName] = useState('')
 
   useEffect(() => {
@@ -20,7 +25,6 @@ function Navbar() {
     });
     setNavStructState(_navStructState);
   }, [location]);
-
   // function onTabbedClicked(tabIdx) {
   //   let _navStructState = JSON.parse(JSON.stringify(navStructState));
   //   _navStructState = _navStructState.map((tab, idx) => {
@@ -40,22 +44,24 @@ function Navbar() {
         <span className="navbar-toggler-icon" />
       </button>
       <div className="collapse navbar-collapse" id="mainNavBar">
-        <ul className="navbar-nav">
+        <ul className="navbar-nav w-100">
           {navStructState.map((tab, idx) => {
             return (
-              <div key={idx}>
-                <Link to={tab.path}>
+              <div key={idx} className={`d-flex ${ tab.name === 'Login'? "ms-auto" :""} me-3`}>
+                { tab.name === 'Login' ?
+                <LoginCard key={idx} tab={tab} location={location} /> 
+                :
+                <Link to={tab.path} state={`${location.pathname}${location.search}`}>
                   <li className="nav-item">
                     <button
-                      className={`btn nav-link ${tab.cssClass} ${
-                        tab.isActive ? "active" : ""
-                      }`}
-                      // onClick={() => onTabbedClicked(idx)}
+                      className={`btn nav-link ${tab.cssClass} 
+                      ${tab.isActive ? "active" : "" }`}
                     >
                       {tab.name}
-                    </button>
+                      </button>
                   </li>
                 </Link>
+          }
               </div>
             );
           })}
